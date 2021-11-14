@@ -1,4 +1,4 @@
-Melyik ország támogatására kezdeményezték az októberi demonstrációt?|Németország|Kórea|Bulgária|Lengyelország|4
+Melyik ország támogatására kezdeményezték az októberi demonstrációt?|Németország|Korea|Bulgária|Lengyelország|4
 Kit kívántak támogatni a magyar diákok?|Munkásokat|Diákokat|Pedagógusokat|Katonákat|2
 Honnan indult el a felvonulás?|Népstadion|Műszaki Egyetem|Margitsziget|Oktogon|2
 Engedélyezte -e a hatalom a felvonulást?|Nem engedélyezte|Azonnal engedélyezte|Tiltás után engedélyezte|Szóba se jött az engedélyezés|3
