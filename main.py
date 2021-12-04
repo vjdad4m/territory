@@ -6,10 +6,21 @@ import random
 pygame.init()
 pygame.mixer.init()
 
+try:
+    with open("territory.conf", "r", encoding="utf-8") as cf:
+        config = cf.read().split()
+        display_width, display_height = int(config[0]), int(config[1])
+        palya_file = str(config[2])
+        DB_MEZO = int(config[3])
+except Exception as e:
+    display_width, display_height = 1920, 1080
+    palya_file = "bp.png"
+    DB_MEZO = 24
+
 with open("kerdesek.txt", "r", encoding="utf-8") as f:
     kerdesek = f.read().split('\n')
 
-DB_KERULET = 24
+
 
 if kerdesek[len(kerdesek)-1] == '':
     kerdesek.pop(len(kerdesek)-1)
@@ -20,16 +31,10 @@ clock = pygame.time.Clock()
 
 font_sz = 64
 
-try:
-    with open("territory.conf", "r", encoding="utf-8") as cf:
-        display_width, display_height = map(int, cf.read().split())
-except:
-    display_width, display_height = 1920, 1080
-
 display = pygame.display.set_mode((display_width, display_height))
 pygame.display.set_caption("Territory")
 
-bp_map = pygame.image.load('assets/bp.png')
+bp_map = pygame.image.load(f'assets/{palya_file}')
 
 bp_map = pygame.transform.scale(bp_map, tuple(map(int, (bp_map.get_width() // 1.4, bp_map.get_height() // 1.4))))
 
@@ -40,7 +45,7 @@ bp_map_rect = bp_map.get_rect(center=(display_width/2+60, display_height/2))
 
 current_pixel_color = 255
 
-kerulet = [True]*(DB_KERULET+1)
+kerulet = [True]*(DB_MEZO+1)
 
 isQuestionShowing = False
 currentQuestion = 0
@@ -89,7 +94,7 @@ while running:
                 running = False
         if event.type == pygame.MOUSEBUTTONDOWN:
             if event.button == 1:
-                if not isQuestionShowing and 0 < current_pixel_color < (DB_KERULET+1) and kerulet[current_pixel_color]:
+                if not isQuestionShowing and 0 < current_pixel_color < (DB_MEZO+1) and kerulet[current_pixel_color]:
                     isQuestionShowing = True
                     chosenDistrict = current_pixel_color
                 elif isQuestionShowing:
@@ -182,3 +187,5 @@ while running:
         
     pygame.display.update()
     clock.tick(30)
+
+pygame.quit()
