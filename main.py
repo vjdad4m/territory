@@ -12,15 +12,16 @@ try:
         display_width, display_height = int(config[0]), int(config[1])
         palya_file = str(config[2])
         DB_MEZO = int(config[3])
+        kerdes_file = str(config[4])
+        
 except Exception as e:
     display_width, display_height = 1920, 1080
     palya_file = "bp.png"
     DB_MEZO = 24
+    kerdes_file = "kerdesek.txt"
 
-with open("kerdesek.txt", "r", encoding="utf-8") as f:
+with open(f"assets/{kerdes_file}", "r", encoding="utf-8") as f:
     kerdesek = f.read().split('\n')
-
-
 
 if kerdesek[len(kerdesek)-1] == '':
     kerdesek.pop(len(kerdesek)-1)
